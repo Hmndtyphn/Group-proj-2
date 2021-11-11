@@ -7,7 +7,6 @@ const seedAll = async () => {
     console.log('--------------');
     await seedUsers();
     console.log('--------------');
-
 };
 
 seedAll();
