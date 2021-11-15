@@ -1,9 +1,10 @@
 const router = require('express').Router();
-const Favorite = require('../../models')
+const Favorites = require('../../models')
+const withAuth = require('../../utils/auth');
 
 //get all favorites
 router.get("/", (req, res) => {
-    Favorite.findAll({
+    Favorites.findAll({
       attributes: [ 'id', 'fav_url', 'title'], // change attribute to match Favorite model
       include: [
           {
@@ -24,7 +25,7 @@ router.get("/", (req, res) => {
 
 //post new favorites
 router.post('/', withAuth, (req, res) => {
-    Favorite.create({
+    Favorites.create({
         title: req.body.title,
         post_url: req.body.post_url,
         user_id: req.session.user_id
@@ -38,7 +39,7 @@ router.post('/', withAuth, (req, res) => {
 
 // update favorites
 router.put('/:id', withAuth, (req, res) => {
-    Favorite.update(
+    Favorites.update(
         {
           title: req.body.title
         },
@@ -66,7 +67,7 @@ router.put('/:id', withAuth, (req, res) => {
 
 router.delete('/:id', withAuth, (req, res) => {
     console.log('id', req.params.id);
-    Favorite.destroy({
+    Favorites.destroy({
       where: {
         id: req.params.id
       }
