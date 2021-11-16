@@ -14,7 +14,7 @@ Favorites.init(
             autoIncrement: true
           },
         fav_url: {
-            type: dataTypes.STRING,
+            type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 isURL: true
@@ -23,7 +23,7 @@ Favorites.init(
         user_id: {
             type: DataTypes.INTEGER,
             references: {
-                model: 'user',
+                model: 'users',
                 key: 'id'
             }
         }
