@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const Favorites = require('../../models')
+const {Favorites} = require('../../models')
 const withAuth = require('../../utils/auth');
 
 //get all favorites
@@ -21,13 +21,24 @@ router.get("/", (req, res) => {
   });
 
 //get single Favorite 
-
+router.get("/:id", (req,res) => {
+    Favorites.find({
+      where: id = req.params.id,
+      attributes: ['id', 'fav_url', 'title'],
+      include: [
+        {
+          model: User,
+          attribute: ['username']
+        }
+    ]
+    })
+})
 
 //post new favorites
 router.post('/', withAuth, (req, res) => {
     Favorites.create({
         title: req.body.title,
-        post_url: req.body.post_url,
+        fav_url: req.body.fav_url,
         user_id: req.session.user_id
     })
     .then(dbPostData => res.json(dbPostData))
