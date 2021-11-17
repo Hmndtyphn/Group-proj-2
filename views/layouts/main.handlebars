@@ -15,7 +15,13 @@
       <a href="/">Down Scout</a>
     </h1>
     <nav>
+      {{#if loggedIn}}
+      <a href="/dashboard">logout</a>
+      <button id="logout" class="btn-no-style"</button>
+
+      {{else}}
       <a href="/login">login</a>
+      {{/if }}
     </nav>
     </header>
     <main>
