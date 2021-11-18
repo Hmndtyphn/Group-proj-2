@@ -1,15 +1,15 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
-const { Post, User, Favorites } = require('../models');
+const {User, Favorites } = require('../models');
 const withAuth = require('../utils/auth');
 
 // get all posts for dashboard
 router.get('/', withAuth, (req, res) => {
   console.log(req.session);
   console.log('======================');
-  Post.findAll({
+  Favorites.findAll({
     where: {
-      user_id: req.session.user_id
+      user_id: req.session.user
     },
     attributes: [
       'id',
@@ -42,3 +42,5 @@ router.get('/', withAuth, (req, res) => {
       res.status(500).json(err);
     });
 });
+
+module.exports = router;

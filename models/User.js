@@ -33,8 +33,8 @@ User.init({
     type: DataTypes.STRING,
     allowNull: false,
     validate: {
-      min: 4,
-      is: /^[a-z]+$/i
+      min: 4
+      //is: /^[a-z]+$/i
     }
   }
 },
@@ -53,7 +53,7 @@ User.init({
   },
   
    sequelize,
-   modelName: 'users'
+   modelName: 'user'
 
   }
    // timestamps: false,
