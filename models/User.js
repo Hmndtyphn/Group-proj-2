@@ -31,11 +31,11 @@ User.init({
   },
   password: {
     type: DataTypes.STRING,
-    allowNull: false,
-    validate: {
-      min: 4
+    allowNull: false
+    //validate: {
+     // min: 4
       //is: /^[a-z]+$/i
-    }
+   // }
   }
 },
   {
@@ -53,8 +53,10 @@ User.init({
   },
   
    sequelize,
-   modelName: 'user'
-
+   modelName: 'users', 
+   freezeTableName: true,
+   underscored: true,
+   timestamps: false
   }
    // timestamps: false,
    // freezeTableName: true,

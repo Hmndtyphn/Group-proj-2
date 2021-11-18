@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
             }
         ]
     }).then(dbData => {
-        const favorites = dbData.map(favorites => favorites.get({plain: true}));
+      //  const favorites = dbData.map(favorites => favorites.get({plain: true}));
 
         res.render('login');
     });

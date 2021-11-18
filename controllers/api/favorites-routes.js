@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const {Favorites} = require('../../models')
+const {User, Favorites} = require('../../models')
 const withAuth = require('../../utils/auth');
 
 //get all favorites
@@ -31,7 +31,17 @@ router.get("/:id", (req,res) => {
           attribute: ['username']
         }
     ]
+    }).then(dbUserData => {
+      if (!dbUserData) {
+        res.status(404).json({ message: 'No post found with this id' });
+        return;
+      }
+      res.json(dbUserData);
     })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 })
 
 //post new favorites

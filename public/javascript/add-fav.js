@@ -4,7 +4,7 @@ async function newFormHandler(event) {
     const title = document.querySelector('input[name="title"]').value;
     const fav_url = document.querySelector('input[name="fav-url"]').value;
   
-    const response = await fetch(`/api/posts`, {
+    const response = await fetch(`/api/favorites`, {
       method: 'POST',
       body: JSON.stringify({
         title,

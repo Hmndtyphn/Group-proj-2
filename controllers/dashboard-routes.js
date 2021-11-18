@@ -9,24 +9,16 @@ router.get('/', withAuth, (req, res) => {
   console.log('======================');
   Favorites.findAll({
     where: {
-      user_id: req.session.user
+      user_id: req.session.user_id
     },
     attributes: [
       'id',
       'fav_url',
       'title',
-      'created_at',
+      'created_at'
       
     ],
     include: [
-      {
-        model: Favorites,
-        attributes: ['id', 'title', 'fav_url', 'user_id', 'created_at'],
-        include: {
-          model: User,
-          attributes: ['username']
-        }
-      },
       {
         model: User,
         attributes: ['username']
@@ -34,7 +26,7 @@ router.get('/', withAuth, (req, res) => {
     ]
   })
     .then(dbPostData => {
-      const favorites = dbPostData.map(favorites => favorites.get({ plain: true }));
+      const favorites = dbPostData.map(favorite => favorite.get({ plain: true }));
       res.render('dashboard', { favorites, loggedIn: true });
     })
     .catch(err => {

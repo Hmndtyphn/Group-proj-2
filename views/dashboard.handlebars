@@ -3,7 +3,7 @@
 
   <form class="new-favorite-form">
     <div>
-      <label for="favorite-title">Title</label>
+      <label for="title">Title</label>
       <input type="text" id="favorite-title" name="favorite-title" />
     </div>
     <div>
@@ -18,10 +18,10 @@
 <section>
   <h2>Your Favorites</h2>
   <ol>
-    {{#each favorites as |favorites|}}
+    {{#each favorites as |favorite|}}
     <li>
-      {{> favorite-info favorites}}
-      <a href="/dashboard/edit/{{favorites.id}}" class="edit-link">Edit favorite</a>
+      {{> favorite-info favorite}}
+      <a href="/dashboard/edit/{{favorite.id}}" class="edit-link">Edit favorite</a>
     </li>
     {{/each}}
   </ol>
