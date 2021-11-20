@@ -1,7 +1,7 @@
 async function newFormHandler(event) {
     event.preventDefault();
   
-    const title = document.querySelector('input[name="title"]').value;
+    const title = document.querySelector('input[name="favorite-title"]').value;
     const fav_url = document.querySelector('input[name="fav-url"]').value;
   
     const response = await fetch(`/api/favorites`, {
