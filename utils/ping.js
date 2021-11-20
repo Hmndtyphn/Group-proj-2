@@ -1,24 +1,38 @@
 const ping = require('ping');
 
-let hosts = ['192.168.1.1', 'google.com', 'yahoo.com'];
-let result= "";
-hosts.forEach(function (host) {
-    ping.promise.probe(host)
-        .then(function (res) {
-            result = res;
-            console.log(result);
-        });
-});
-
-//Deconstrunct result from ping (Looking for alive from result)
-
-//Note Spot
-// const statusRend = (status) => {
-//     //if status = true green else red
-//     if (alive) === true){
-//       return trafficlight === green
-//     } else {
-//         trafficlight === red
-//     }
-
+// const pingList = async (hosts) => {
+//     let pingResult = []
+//    await hosts.forEach( async (host) => {
+//         await ping.promise.probe(host.dataValues.fav_url)
+//             .then(async (res) => {
+//                 //check that result is as expected
+//                 console.log(res.alive)
+                
+//                 //create 
+//                 await pingResult.push(res)
+                
+//             });
+//     });
+//     return pingResult;
 // }
+const pingList = async hosts => {
+    let result = []
+    for(let host of hosts){
+        let res = await ping.promise.probe(host);
+        // await resultPush(res);
+        result.push(res);
+    }
+    returnList(result)
+
+}
+
+// const resultPush = async (res) => {
+//     result.push(res);
+    
+// }
+
+const returnList = async list => {
+    return list
+}
+
+module.exports = pingList;

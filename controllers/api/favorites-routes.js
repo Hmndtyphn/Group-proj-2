@@ -2,6 +2,19 @@ const router = require('express').Router();
 const {User, Favorites} = require('../../models')
 const withAuth = require('../../utils/auth');
 
+const ping = require('ping');
+//test
+const pingList = async hosts => {
+  let result = []
+  for(let host of hosts){
+      let res = await ping.promise.probe(host);
+      // await resultPush(res);
+      result.push(res);
+  };
+  // returnList(result)
+  return result
+};
+
 //get all favorites
 router.get("/", (req, res) => {
     Favorites.findAll({
@@ -13,7 +26,17 @@ router.get("/", (req, res) => {
           }
       ]
     })
-      .then((dbUserData) => res.json(dbUserData))
+      .then(async (dbUserData) => {
+        // ping sites here :)
+        console.log(dbUserData)
+        
+        let pingResponse = await pingList(dbUserData)
+        // console.log('this should be ping response favorites rout', pingResponse)
+        // Object.assign(res, ...pingResponse)
+        // looking for res.alive
+          res.json(pingResponse)
+          
+        })
       .catch((err) => {
         console.log(err);
         res.status(500).json(err);
