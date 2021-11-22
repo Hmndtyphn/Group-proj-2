@@ -2,7 +2,7 @@ const router = require('express').Router();
 const sequelize = require('../config/connection');
 const {User, Favorites } = require('../models');
 const withAuth = require('../utils/auth');
-const pingList = require('../utils/ping');
+const pingList = require('../utils/ping.js');
 // get all posts for dashboard
 router.get('/', withAuth, (req, res) => {
   console.log(req.session);
