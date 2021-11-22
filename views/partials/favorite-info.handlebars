@@ -1,11 +1,8 @@
-<article class="favorites">
-  <div class="title">
-    <a href="http://{{fav_url}}" target="_self" referrerpolicy="no-referrer" >{{title}}</a>
-    <span>({{format_url fav_url}})</span>
+
+   <td ><a href="http://{{fav_url}}" target="_self" referrerpolicy="no-referrer" >{{title}}</a></td>
+    <td><span>({{format_url fav_url}})</span></td>
     {{#if favStatus}}
-    <div>{{title}} is <span style="color: green;">up</span></div>
+   <td>{{title}} is <span style="color: green;">up</span></td>
     {{else}}
-    <div>{{title}} is <span style="color: red;">down</span></div>
+    <td>{{title}} is <span style="color: red;">down</span></td>
     {{/if}}
-  </div>
-</article>

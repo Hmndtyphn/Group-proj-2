@@ -17,14 +17,20 @@
 {{#if favorites.length}}
 <section>
   <h2>Your Favorites</h2>
-  <ol>
+  <table>
+    <tr>
+      <th>Title</th>
+      <th>Link</th>
+      <th>Status</th>
+      <th>Edit</th>
+    </tr>
     {{#each favorites as |favorite|}}
-    <li>
+    <tr>
       {{> favorite-info favorite}}
-      <a href="/dashboard/edit/{{favorite.id}}" class="edit-link">Edit favorite</a>
-    </li>
+      <td><a href="/dashboard/edit/{{favorite.id}}" class="edit-link">Edit favorite</a></td>
+    </tr>
     {{/each}}
-  </ol>
+  </table>
 </section>
 {{/if}}
 
