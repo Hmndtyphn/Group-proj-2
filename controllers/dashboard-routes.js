@@ -2,6 +2,7 @@ const router = require('express').Router();
 const sequelize = require('../config/connection');
 const {User, Favorites } = require('../models');
 const withAuth = require('../utils/auth');
+const pint = require('ping');
 const pingList = async hosts => {
   let result = hosts
   for(i = 0; i < hosts.length; i++){
