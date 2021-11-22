@@ -30,6 +30,10 @@ Favorites.init(
                 model: 'users',
                 key: 'id'
             }
+        },
+        fav_status: {
+            type: DataTypes.BOOLEAN,
+            default: false
         }
         
     },

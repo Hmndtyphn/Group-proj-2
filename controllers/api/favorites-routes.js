@@ -1,19 +1,8 @@
 const router = require('express').Router();
-const {User, Favorites} = require('../../models')
+const {User, Favorites} = require('../../models');
 const withAuth = require('../../utils/auth');
-
+const pingList = require('../../utils/ping');
 const ping = require('ping');
-//test
-const pingList = async hosts => {
-  let result = []
-  for(let host of hosts){
-      let res = await ping.promise.probe(host);
-      // await resultPush(res);
-      result.push(res);
-  };
-  // returnList(result)
-  return result
-};
 
 //get all favorites
 router.get("/", (req, res) => {
@@ -85,7 +74,8 @@ router.post('/', withAuth, (req, res) => {
 router.put('/:id', withAuth, (req, res) => {
     Favorites.update(
         {
-          title: req.body.title
+          title: req.body.title,
+          fav_url: req.body.fav_url
         },
         {
           where: {

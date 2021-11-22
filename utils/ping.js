@@ -1,38 +1,19 @@
 const ping = require('ping');
 
-// const pingList = async (hosts) => {
-//     let pingResult = []
-//    await hosts.forEach( async (host) => {
-//         await ping.promise.probe(host.dataValues.fav_url)
-//             .then(async (res) => {
-//                 //check that result is as expected
-//                 console.log(res.alive)
-                
-//                 //create 
-//                 await pingResult.push(res)
-                
-//             });
-//     });
-//     return pingResult;
-// }
 const pingList = async hosts => {
-    let result = []
-    for(let host of hosts){
-        let res = await ping.promise.probe(host);
+    let result = hosts
+    for(i = 0; i < hosts.length; i++){
+        let res = await ping.promise.probe(hosts[i].fav_url, {
+            numeric: true,
+            min_reply: 1,
+            extra: ['-i', '2']
+        });
         // await resultPush(res);
-        result.push(res);
-    }
-    returnList(result)
+        result[i].dataValues.favStatus = res.alive
+    };
+    // returnList(result)
+    return result
+  };
 
-}
-
-// const resultPush = async (res) => {
-//     result.push(res);
-    
-// }
-
-const returnList = async list => {
-    return list
-}
 
 module.exports = pingList;

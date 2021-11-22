@@ -1,0 +1,18 @@
+<article>
+  <a href="/dashboard"> &larr; Back to dashboard</a>
+  <h2>
+    Edit favorite
+  </h2>
+  <form class="edit-favorite-form">
+    <div>
+      <input name="favorite-title" type="text" value="{{favorite.title}}" />
+      <input name="favorite-url" type="text" value="{{favorite.fav_url}}"/>
+    </div>
+ 
+    <button type="submit">Save favorite</button>
+    <button type="button" class="delete-favorite-btn">Delete favorite</button>
+  </form>
+</article>
+
+<script src="/javascript/edit-fav.js"></script>
+<script src="/javascript/delete-fav.js"></script>
