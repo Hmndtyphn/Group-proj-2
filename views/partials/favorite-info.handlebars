@@ -3,9 +3,9 @@
     <a href="http://{{fav_url}}" target="_self" referrerpolicy="no-referrer" >{{title}}</a>
     <span>({{format_url fav_url}})</span>
     {{#if favStatus}}
-    <div>{{title}} is up</div>
+    <div>{{title}} is <span style="color: green;">up</span></div>
     {{else}}
-    <div>{{title}} is down</div>
+    <div>{{title}} is <span style="color: red;">down</span></div>
     {{/if}}
   </div>
 </article>
