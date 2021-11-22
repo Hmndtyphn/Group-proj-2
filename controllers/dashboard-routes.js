@@ -2,8 +2,20 @@ const router = require('express').Router();
 const sequelize = require('../config/connection');
 const {User, Favorites } = require('../models');
 const withAuth = require('../utils/auth');
-const pingList = require('../utils/ping.js');
-// get all posts for dashboard
+const pingList = async hosts => {
+  let result = hosts
+  for(i = 0; i < hosts.length; i++){
+      let res = await ping.promise.probe(hosts[i].fav_url, {
+          numeric: true,
+          min_reply: 1,
+          extra: ['-i', '2']
+      });
+      // await resultPush(res);
+      result[i].dataValues.favStatus = res.alive
+  };
+  // returnList(result)
+  return result
+};// get all posts for dashboard
 router.get('/', withAuth, (req, res) => {
   console.log(req.session);
   console.log('======================');
