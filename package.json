@@ -15,6 +15,8 @@
     "node": "^17.0.1",
     "ping": "^0.4.1",
     "sequelize": "^6.9.0",
+    "tcp-ping": "^0.1.1",
+    "tcp-ping-node": "^1.0.0",
     "website-pinger": "^1.0.2"
   }
 }
