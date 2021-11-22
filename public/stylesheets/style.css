@@ -175,4 +175,26 @@
     justify-content: center;
     padding: 1%;
     font-size: 110%;
+    flex-wrap: wrap;
   }
+
+.line-break {
+  width: 100%;
+} 
+
+table, th, td {
+  border: 1px solid black;
+}
+tr:nth-child(even){
+  background-color: #f2f2f2;
+}
+
+
+tr:hover {
+  background-color: #ddd;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
